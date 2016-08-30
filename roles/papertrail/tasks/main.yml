@@ -1,0 +1,7 @@
+- yum: name=rsyslog-gnutls state=latest
+
+- copy: src=papertrail-bundle.pem dest=/etc/papertrail-bundle.pem owner=root group=root mode=0644
+
+- copy: src=10-papertrail.conf  dest=/etc/rsyslog.d/ owner=root group=root mode=0644
+  notify:
+    - restart rsyslog
